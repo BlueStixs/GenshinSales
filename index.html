@@ -7,33 +7,92 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-
+    
     <script src="files/genshin.js"></script>
     <script src="script.js"></script>
-    <title>Enviosity Wishing Simulator</title>
+    <title>Higher or Lower ft. Genshin Characters</title>
 
 <body onload="loadSite()">
-    <div id="home">
+    <div class="bg-image home">
         <center>
-            <img src="images/background/banner.webp" id="banner">
+            <img src="images/icons/logo.png" id="logo" onclick="homePage()">
+            <div id="homeScreen">
+                <p>Choose the more popular Genshin Character.
+                    <br>Characters range from the Traveler to Shenhe.
+                    <br> This data is from October 2021 provided by Genshin Lab
+                    <br> If you know a way to get more recent data, please DM me on twitter.
+                </p>
+                <button class="playBtn" onclick="play()">Play Now</button>
+                <p>
+                    <font color="yellow">Note:</font> the recent 5-star character would be Kokomi, but Shenhe, Gorou,
+                    Itto, etc. are on this list because of <img id="suske" src="images/icons/suske.png">
+                </p>
+
+            </div>
         </center>
 
-        <button id="wishBtn" onclick="wish()">
-            <img src="images/icons/wishBtn.png">
-        </button>
+        <div class="theGame">
+            <center>
+                <div class="charImage">
+                    <img id="image1">
+                    <span class="caption">
+                        <p id="character1"></p>
+                        <p id="searches1"></p>
+                    </span>
+                </div>
+                <div class="charImage">
+                    <img id="image2">
+                    <span class="caption">
+                        <p id="character2"></p>
+                        <p id="searches2"></p>
+                        <!--true = higher false = lower-->
+                        <div id="buttons">
+                            <button class="higherLowerBtn" onclick="checkWin(true)">Higher ▲</button><br>
+                            <button class="higherLowerBtn" onclick="checkWin(false)">Lower ▼</button>
+                        </div>
+                    </span>
+                </div>
+            </center>
+        </div>
+
+        <div id="win">
+            <center>
+                <h1>You Won! <img id="winlose" src="images/icons/enviChill.png"></h1>
+                <p id="finalscore"></p>
+                <button class="playBtn" onclick="play()">Try Again</button>
+            </center>
+        </div>
+
+        <div id="lose">
+            <center>
+                <h1>You lost <img id="winlose" src="images/icons/enviSad.png"></h1>
+                <p id="finalscore"></p>
+                <button class="playBtn" onclick="play()">Try Again</button>
+            </center>
+        </div>
+        <br>
+
+        <div id="highscore"></div>
+        <div id="currScore"></div>
+
+        <audio id="sellout" controls>
+            <source src="audio/brian.ogg" type="audio/ogg">
+            <source src="audio/brian.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="footer">
+            <p>Made by <a href="https://www.twitter.com/BlueStixs" target="_blank">BlueStixs</a></p>
+            <p>Data from <a href="https://www.genshinlab.com/genshin-impact-characters-popularity-index/"
+                    target="_blank">Genshin Lab</a></p>
+            <p>Subscribe to <a href="https://www.youtube.com/Enviosity?sub_confirmation=1" target="_blank" onclick="selloutMessage()">Enviosity</a>
+            </p>
+            <p>Please support the <a href="https://www.higherlowergame.com" target="_blank">official release</a></p>
+
+        </div>
+
     </div>
-
-    <video id="four-star">
-        <source src="videos/4starwish.mp4" type="video/mp4">
-        <source src="videos/4starwish.ogg" type="video/ogg">
-    </video>
-
-    <video id="five-star">
-        <source src="videos/5starwish.mp4" type="video/mp4">
-        <source src="videos/5starwish.ogg" type="video/ogg">
-    </video>
-
 </body>
 <script src="script.js"></script>
 </head>
+
 </html>
