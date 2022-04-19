@@ -1,7 +1,7 @@
 const charList = [
     //character, searches, picture
     ["Albedo Banner 1", 11816107, "images/characters/albedo.webp"],
-    ["Arataki Itto Banner 1", 1340472, "images/characters/itto.webp"],
+    ["Arataki Itto Banner 1", 13404072, "images/characters/itto.webp"],
     ["Eula Banner 1", 12619390, "images/characters/eula.webp"],
     ["Ganyu Banner 1", 15669918, "images/characters/ganyu.webp"],
     ["Hu Tao Banner 1", 12481634, "images/characters/hutao.webp"],
