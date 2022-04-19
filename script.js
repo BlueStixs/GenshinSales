@@ -1,7 +1,7 @@
 var completed = [];
 
-var charSearches1;
-var charSearches2;
+var charRevenue1;
+var charRevenue2;
 
 var charOne = Math.floor(Math.random() * (charList.length - 1));
 var charTwo;
@@ -41,15 +41,15 @@ function play() {
     // random characters    
     if (charTwo == null) {
         charTwo = generateRandom(charOne);
-        charSearches1 = charList[charOne][1];
-        charSearches2 = charList[charTwo][1];
+        charRevenue1 = charList[charOne][1];
+        charRevenue2 = charList[charTwo][1];
 
         fadeIn();
     } else {
         charOne = charTwo;
         charTwo = generateRandom(charOne);
-        charSearches1 = charList[charOne][1];
-        charSearches2 = charList[charTwo][1];
+        charRevenue1 = charList[charOne][1];
+        charRevenue2 = charList[charTwo][1];
 
         document.getElementById("image1").style.opacity = 0;
         slideLeft();
@@ -84,32 +84,31 @@ function addDecimals(x) {
 
 function checkWin(input) {
     document.getElementById("buttons").style.display = "none";
-    document.getElementById("searches2").innerHTML = 0 + " searches";
-    document.getElementById("searches2").style.display = "block";
+    document.getElementById("revenue2").innerHTML = "$" + 0;
+    document.getElementById("revenue2").style.display = "block";
 
-    //animating search count
-    var count = Math.round(charSearches2 / 10);
-    var num = 1111;
-    if (charSearches2 > 500000) {
-        num = 3333;
+    var count = Math.round(charRevenue2 / 10);
+    var num = 33333;
+    if (charRevenue2 > 10000000) {
+        num = 55555;
     }
 
     animateNum = setInterval(
         function () {
-            document.getElementById("searches2").innerHTML = addDecimals(count) + " searches";
+            document.getElementById("revenue2").innerHTML = "$"+ addDecimals(count);
             count += num;
 
-            if (count > charSearches2 - 1111) {
-                num = charSearches2 - count;
+            if (count > charRevenue2 - 33333) {
+                num = charRevenue2 - count;
             }
-            if (count == charSearches2) {
+            if (count == charRevenue2) {
                 clearInterval(animateNum);
-                document.getElementById("searches2").innerHTML = addDecimals(charSearches2) + " searches";
+                document.getElementById("revenue2").innerHTML = "$"+ addDecimals(charRevenue2);
 
                 setTimeout(function () {
                     // player chose higher
                     if (input) {
-                        if (charSearches1 < charSearches2) {
+                        if (charRevenue1 < charRevenue2) {
                             score++;
                             changeScore(score);
                             slideRight();
@@ -122,7 +121,7 @@ function checkWin(input) {
                     }
                     // player chose lower
                     else {
-                        if (charSearches1 < charSearches2) {
+                        if (charRevenue1 < charRevenue2) {
                             playerWinLose("lose");
                         } else {
                             score++;
@@ -158,9 +157,9 @@ function playerWinLose(check) {
             charTwo = null;
             completed = [];
             score = 0;
-            document.getElementById("searches1").innerHTML = "";
+            document.getElementById("revenue1").innerHTML = "";
             document.getElementById("character1").innerHTML = "";
-            document.getElementById("searches2").innerHTML = "";
+            document.getElementById("revenue2").innerHTML = "";
             document.getElementById("character2").innerHTML = "";
 
             document.getElementById(check).style.display = "block";
@@ -182,8 +181,8 @@ function clearAll() {
     document.getElementById("image2").style.display = "none";
     document.getElementById("character1").style.display = "none";
     document.getElementById("character2").style.display = "none";
-    document.getElementById("searches1").style.display = "none";
-    document.getElementById("searches2").style.display = "none";
+    document.getElementById("revenue1").style.display = "none";
+    document.getElementById("revenue2").style.display = "none";
     document.getElementById("highscore").style.display = "none";
     document.getElementById("currScore").style.display = "none";
     document.getElementById("homeScreen").style.opacity = 0;
@@ -197,7 +196,7 @@ function makeCharInfoVisible() {
     document.getElementById("image2").style.display = "block";
     document.getElementById("character1").style.display = "block";
     document.getElementById("character2").style.display = "block";
-    document.getElementById("searches1").style.display = "block";
+    document.getElementById("revenue1").style.display = "block";
     document.getElementById("highscore").style.display = "block";
     document.getElementById("currScore").style.display = "block";
 }
@@ -214,9 +213,9 @@ function fadeIn() {
         document.getElementById("image2").style.opacity = 1;
         setTimeout(function (){
             document.getElementById("character1").innerHTML = charList[charOne][0];
-            document.getElementById("searches1").innerHTML = addDecimals(charSearches1) + " searches";
+            document.getElementById("revenue1").innerHTML = "$"+ addDecimals(charRevenue1);
             document.getElementById("character1").innerHTML = charList[charOne][0];
-            document.getElementById("searches1").innerHTML = addDecimals(charSearches1) + " searches";
+            document.getElementById("revenue1").innerHTML = "$"+ addDecimals(charRevenue1);
             
             document.getElementById("character2").innerHTML = charList[charTwo][0];
             document.getElementById("buttons").style.display = "block";
@@ -234,11 +233,10 @@ function scaleUp(myId) {
 function slideRight() {
     document.getElementById("image2").style.transform = "translateX(-60.5vh)"
 
-    document.getElementById("searches2").innerHTML = "";
+    document.getElementById("revenue2").innerHTML = "";
     document.getElementById("character2").innerHTML = "";
 }
 
-// HEY! I SEE YOU LOOKING AT THE CODE. STOP LOOKING HERE I KNOW MY CODE IS BAD
 function slideLeft() {
     setTimeout(function () {
         document.getElementById("image1").style.opacity = 1;
@@ -246,7 +244,7 @@ function slideLeft() {
         setTimeout(function () {
             document.getElementById("image1").src = charList[charOne][2];
             document.getElementById("character1").innerHTML = charList[charOne][0];
-            document.getElementById("searches1").innerHTML = addDecimals(charSearches1) + " searches";
+            document.getElementById("revenue1").innerHTML = "$"+ addDecimals(charRevenue1);
         }, 100);
         setTimeout(function () {
             document.getElementById("image2").src = charList[charTwo][2];
