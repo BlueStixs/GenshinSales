@@ -56,6 +56,7 @@ function play() {
     }
     completed.push(charOne);
 
+    console.log(charRevenue1 < charRevenue2)
     makeCharInfoVisible()
 }
 
@@ -156,7 +157,6 @@ function playerWinLose(check) {
             charOne = Math.floor(Math.random() * (charList.length - 1));
             charTwo = null;
             completed = [];
-            score = 0;
             document.getElementById("revenue1").innerHTML = "";
             document.getElementById("character1").innerHTML = "";
             document.getElementById("revenue2").innerHTML = "";
@@ -165,6 +165,7 @@ function playerWinLose(check) {
             document.getElementById(check).style.display = "block";
             document.getElementById("finalscore").innerHTML = "Your final score: " + score;
             document.getElementById("currScore").innerHTML = "Score: " + score;
+            score = 0;
         }, 1000);
     } else {
         play();

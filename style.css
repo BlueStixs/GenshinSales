@@ -131,8 +131,16 @@ img:hover {
     margin: 0.25vh;
 }
 
+#character1, #character2 {
+    font-size: 3vh;
+    line-height: 3vh;
+
+}
+
 #revenue1, #revenue2 {
     color: rgb(44, 255, 44);
+    font-size: 3vh;
+
 }
 
 #revenue2 {
